@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrueBooks Staffing Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+
+    <!-- Navbar -->
+    <header class="fixed w-full z-50 bg-white/80 backdrop-blur border-b">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-blue-700">TrueBooks Staffing</h1>
+        <nav class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+          <a href="#features" class="hover:text-blue-700">Features</a>
+          <a href="#workflow" class="hover:text-blue-700">How It Works</a>
+          <a href="#security" class="hover:text-blue-700">Security</a>
+          <a href="#contact" class="hover:text-blue-700">Contact</a>
+        </nav>
+        <a href="/login" class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 text-sm">Log In</a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-white">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+        <div class="md:w-1/2" data-aos="fade-right">
+          <h2 class="text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+            Your Next Career Opportunity Starts Here
+          </h2>
+          <p class="text-gray-600 text-lg mb-6">
+            Explore and apply for job openings with TrueBooks Partners. Stay updated on the latest roles, match with positions that fit your skills, and easily manage your applications—all through our portal.
+          </p>
+          <div class="flex gap-4">
+            <a href="/login" class="bg-blue-700 text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-blue-800">Access Your Portal</a>
+            <a href="#features" class="text-blue-700 font-medium text-sm hover:underline">Learn More</a>
+          </div>
+        </div>
+        <div class="md:w-1/2" data-aos="fade-left">
+          <img src="https://via.placeholder.com/600x350?text=Staffing+Portal" class="rounded-xl shadow-xl" alt="Portal preview" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-12">Features to Enhance Your Job Application</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+          <div class="p-6 bg-gray-50 rounded-xl shadow hover:shadow-md transition" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="font-semibold text-lg mb-2">Create Your Profile</h3>
+            <p class="text-gray-600">Upload your resume, provide your skills and experience, and create a profile that highlights your qualifications for job opportunities.</p>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-xl shadow hover:shadow-md transition" data-aos="zoom-in" data-aos-delay="200">
+            <h3 class="font-semibold text-lg mb-2">Browse Job Openings</h3>
+            <p class="text-gray-600">Explore a wide range of roles within TrueBooks Partners and apply directly from your dashboard.</p>
+          </div>
+          <div class="p-6 bg-gray-50 rounded-xl shadow hover:shadow-md transition" data-aos="zoom-in" data-aos-delay="300">
+            <h3 class="font-semibold text-lg mb-2">Track Your Application</h3>
+            <p class="text-gray-600">Stay updated on the status of your applications with real-time notifications and next steps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="workflow" class="py-24 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-10">How It Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+          <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-blue-700 text-2xl mb-2">1. Create Your Profile</div>
+            <p class="text-gray-600">Fill in your personal details, upload your resume, and add your skills to create a personalized profile.</p>
+          </div>
+          <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-blue-700 text-2xl mb-2">2. Apply for Roles</div>
+            <p class="text-gray-600">Browse job openings at TrueBooks Partners and apply directly from your dashboard with just a click.</p>
+          </div>
+          <div class="p-6 bg-white rounded-xl shadow hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-blue-700 text-2xl mb-2">3. Track Your Progress</div>
+            <p class="text-gray-600">Monitor the status of your applications, receive updates, and know what the next steps are for each job you applied for.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section id="security" class="py-24 bg-white">
+      <div class="max-w-4xl mx-auto px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6">Your Data is Secure with Us</h2>
+        <p class="text-gray-600 text-lg mb-6">
+          We prioritize the security of your personal information. Our portal is hosted on AWS with industry-leading encryption and strict access control.
+        </p>
+        <img src="https://via.placeholder.com/120x40?text=AWS+Secured" alt="AWS Badge" class="mx-auto" data-aos="zoom-in" />
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" class="bg-gray-100 py-10 border-t">
+      <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600" >
+        <p>&copy; 2025 TrueBooks Partners. All rights reserved.</p>
+        <p>Need help? <a href="mailto:support@truebooks.com" class="text-blue-700 hover:underline">support@truebooks.com</a></p>
+      </div>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        easing: 'ease-out-cubic',
+      });
+    </script>
+  </body>
+</html>
