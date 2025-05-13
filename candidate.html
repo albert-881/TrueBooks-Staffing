@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Candidate Portal - TrueBooks Staffing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm fixed w-full z-40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-700" data-aos="fade-right">TrueBooks Candidate Portal</h1>
+      <div class="flex items-center gap-4 text-sm" data-aos="fade-left">
+        <span class="text-gray-600">Welcome, Jane Doe</span>
+        <a href="/logout" class="text-blue-700 hover:underline">Log Out</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dashboard -->
+  <main class="pt-24 max-w-7xl mx-auto px-6 space-y-16">
+
+    <!-- Section: Quick Actions -->
+    <section data-aos="fade-up" data-aos-delay="100">
+      <h2 class="text-xl font-semibold mb-4">Quick Actions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition" data-aos="zoom-in" data-aos-delay="150">
+          <h3 class="font-semibold text-lg mb-2">Browse Jobs</h3>
+          <p class="text-gray-600 mb-4">View new roles available at TrueBooks Partners.</p>
+          <a href="#" class="text-blue-700 hover:underline text-sm font-medium">Explore Opportunities →</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition" data-aos="zoom-in" data-aos-delay="250">
+          <h3 class="font-semibold text-lg mb-2">Application Status</h3>
+          <p class="text-gray-600 mb-4">Check where you stand in your current applications.</p>
+          <a href="#" class="text-blue-700 hover:underline text-sm font-medium">View Status →</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition" data-aos="zoom-in" data-aos-delay="350">
+          <h3 class="font-semibold text-lg mb-2">Edit Profile</h3>
+          <p class="text-gray-600 mb-4">Update your resume, skills, and personal info.</p>
+          <a href="#" class="text-blue-700 hover:underline text-sm font-medium">Manage Profile →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Application Tracker -->
+    <section data-aos="fade-up" data-aos-delay="100">
+      <h2 class="text-xl font-semibold mb-4">My Applications</h2>
+      <div class="bg-white shadow rounded-lg overflow-hidden">
+        <table class="w-full text-sm">
+          <thead class="bg-blue-50 text-left text-gray-600 uppercase text-xs">
+            <tr>
+              <th class="p-4">Position</th>
+              <th class="p-4">Location</th>
+              <th class="p-4">Status</th>
+              <th class="p-4">Last Updated</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr class="hover:bg-gray-50" data-aos="fade-right" data-aos-delay="200">
+              <td class="p-4">Administrative Assistant</td>
+              <td class="p-4">Brownsville, TX</td>
+              <td class="p-4 text-yellow-600 font-semibold">Under Review</td>
+              <td class="p-4">May 12, 2025</td>
+            </tr>
+            <tr class="hover:bg-gray-50" data-aos="fade-right" data-aos-delay="300">
+              <td class="p-4">Bookkeeper</td>
+              <td class="p-4">Brownsville, TX</td>
+              <td class="p-4 text-green-600 font-semibold">Interview Scheduled</td>
+              <td class="p-4">May 10, 2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section: Profile Overview -->
+    <section data-aos="fade-up" data-aos-delay="100">
+      <h2 class="text-xl font-semibold mb-4">Profile Overview</h2>
+      <div class="bg-white p-6 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-gray-700 font-medium mb-1">Full Name</h3>
+          <p class="text-gray-900">Jane Doe</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-gray-700 font-medium mb-1">Email</h3>
+          <p class="text-gray-900">jane.doe@email.com</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="400">
+          <h3 class="text-gray-700 font-medium mb-1">Resume</h3>
+          <p class="text-blue-700 hover:underline cursor-pointer">View Uploaded Resume</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="500">
+          <h3 class="text-gray-700 font-medium mb-1">Skills</h3>
+          <p class="text-gray-900">QuickBooks, Excel, Time Management</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 bg-white border-t py-6 text-sm text-center text-gray-500" data-aos="fade-up">
+    &copy; 2025 TrueBooks Partners. All rights reserved.
+  </footer>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+    });
+  </script>
+</body>
+</html>
