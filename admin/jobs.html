@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jobs - TrueBooks Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-700">Manage Jobs</h1>
+      <div class="text-sm text-gray-600">Welcome, Admin</div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="flex pt-24">
+    <aside class="w-60 bg-white shadow-md fixed top-0 left-0 h-full">
+      <div class="px-6 py-5 font-bold text-blue-700 text-xl border-b">TrueBooks Admin</div>
+      <nav class="px-6 py-4 space-y-3 text-sm text-gray-700">
+        <a href="admin-dashboard.html" class="block hover:text-blue-600">Dashboard</a>
+        <a href="applicants.html" class="block hover:text-blue-600">Applicants</a>
+        <a href="companies.html" class="block hover:text-blue-600">Companies</a>
+        <a href="jobs.html" class="block text-blue-700 font-semibold">Jobs</a>
+        <a href="matches.html" class="block hover:text-blue-600">Matches</a>
+        <a href="login.html" class="block text-red-600 mt-6">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-6 ml-60 space-y-10 max-w-7xl">
+      <!-- Header Section -->
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-semibold">Job Listings</h2>
+        <button class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm shadow transition">Add Job</button>
+      </div>
+
+      <!-- Table Section -->
+      <div class="overflow-x-auto bg-white rounded-lg shadow" data-aos="fade-up">
+        <table class="min-w-full text-sm text-left text-gray-700">
+          <thead class="bg-gray-100 border-b text-xs uppercase">
+            <tr>
+              <th class="px-6 py-4">Title</th>
+              <th class="px-6 py-4">Company</th>
+              <th class="px-6 py-4">Location</th>
+              <th class="px-6 py-4">Posted</th>
+              <th class="px-6 py-4">Status</th>
+              <th class="px-6 py-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="jobsTableBody" class="divide-y">
+            <!-- Rows inserted by JS -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="jobModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+      <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl font-bold">&times;</button>
+      <h3 id="modalTitle" class="text-xl font-bold mb-4"></h3>
+      <div id="modalContent" class="space-y-2 text-gray-700">
+        <!-- Details go here -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-16 bg-white border-t py-6 text-sm text-center text-gray-500">
+    &copy; 2025 TrueBooks Partners. Admin Portal.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Sample job data with extra details
+    const jobs = [
+      {
+        id: 1,
+        title: "Bookkeeper",
+        company: "Emilias",
+        location: "Brownsville, TX",
+        posted: "May 10, 2025",
+        status: "Open",
+        salary: "$45,000 - $55,000",
+        skills: ["Accounting", "Excel", "QuickBooks"],
+        schedule: "Full-time, Monday to Friday",
+        description: "Manage financial records, invoices, and payroll."
+      },
+      {
+        id: 2,
+        title: "Payroll Specialist",
+        company: "SA Recycling",
+        location: "Brownsville, TX",
+        posted: "May 2, 2025",
+        status: "Interviewing",
+        salary: "$50,000 - $60,000",
+        skills: ["Payroll systems", "Attention to detail", "Communication"],
+        schedule: "Full-time, flexible hours",
+        description: "Process payroll and employee benefits."
+      }
+      // Add more jobs as needed
+    ];
+
+    // Render table rows
+    const jobsTableBody = document.getElementById('jobsTableBody');
+
+    function createStatusBadge(status) {
+      let colors = {
+        "Open": "bg-green-100 text-green-700",
+        "Interviewing": "bg-yellow-100 text-yellow-700",
+        "Closed": "bg-red-100 text-red-700"
+      };
+      let colorClass = colors[status] || "bg-gray-100 text-gray-700";
+      return `<span class="${colorClass} px-2 py-1 text-xs rounded">${status}</span>`;
+    }
+
+    function renderJobs() {
+      jobsTableBody.innerHTML = '';
+      jobs.forEach(job => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-gray-50";
+        tr.innerHTML = `
+          <td class="px-6 py-4 font-medium text-gray-900">${job.title}</td>
+          <td class="px-6 py-4">${job.company}</td>
+          <td class="px-6 py-4">${job.location}</td>
+          <td class="px-6 py-4">${job.posted}</td>
+          <td class="px-6 py-4">${createStatusBadge(job.status)}</td>
+          <td class="px-6 py-4 text-right space-x-3">
+            <button class="text-blue-600 hover:underline text-xs view-btn" data-id="${job.id}">View</button>
+            <button class="text-yellow-600 hover:underline text-xs">Edit</button>
+            <button class="text-red-600 hover:underline text-xs">Delete</button>
+          </td>
+        `;
+        jobsTableBody.appendChild(tr);
+      });
+    }
+
+    // Modal controls
+    const jobModal = document.getElementById('jobModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    function openModal(job) {
+      modalTitle.textContent = job.title + " @ " + job.company;
+      modalContent.innerHTML = `
+        <p><strong>Salary:</strong> ${job.salary}</p>
+        <p><strong>Skills Required:</strong> ${job.skills.join(", ")}</p>
+        <p><strong>Schedule:</strong> ${job.schedule}</p>
+        <p><strong>Description:</strong> ${job.description}</p>
+      `;
+      jobModal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      jobModal.classList.add('hidden');
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+    jobModal.addEventListener('click', e => {
+      if (e.target === jobModal) closeModal();
+    });
+
+    // Delegate View button clicks
+    jobsTableBody.addEventListener('click', (e) => {
+      if (e.target.classList.contains('view-btn')) {
+        const jobId = parseInt(e.target.getAttribute('data-id'));
+        const job = jobs.find(j => j.id === jobId);
+        if (job) openModal(job);
+      }
+    });
+
+    // Initial render
+    renderJobs();
+  </script>
+</body>
+</html>

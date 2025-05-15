@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manual Matches - Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 bg-white shadow p-4 flex justify-between items-center z-50">
+    <h1 class="text-xl font-bold text-blue-700">Create Candidate-Job Match</h1>
+    <div class="text-sm text-gray-600">Welcome, Admin</div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="fixed top-16 left-0 h-full w-56 bg-white shadow p-4">
+    <nav class="space-y-3 text-gray-700 text-sm font-medium">
+      <a href="admin-dashboard.html" class="block hover:text-blue-600">Dashboard</a>
+      <a href="applicants.html" class="block hover:text-blue-600">Applicants</a>
+      <a href="companies.html" class="block hover:text-blue-600">Companies</a>
+      <a href="jobs.html" class="block hover:text-blue-600">Jobs</a>
+      <a href="matches.html" class="block text-blue-700 font-semibold">Matches</a>
+      <a href="login.html" class="block text-red-600 mt-6">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main class="ml-56 mt-20 p-6 max-w-4xl mx-auto">
+
+    <!-- Form -->
+    <form id="matchForm" class="bg-white p-6 rounded shadow space-y-4">
+      <div>
+        <label for="applicant" class="block font-semibold mb-1">Select Applicant:</label>
+        <select id="applicant" class="w-full p-2 border rounded" required></select>
+      </div>
+      <div>
+        <label for="job" class="block font-semibold mb-1">Select Job:</label>
+        <select id="job" class="w-full p-2 border rounded" required></select>
+      </div>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create Match</button>
+    </form>
+
+    <!-- Matches List -->
+    <section class="mt-8">
+      <h2 class="text-lg font-semibold mb-3">Existing Matches</h2>
+      <table class="w-full bg-white rounded shadow divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="p-3 text-left text-xs font-semibold text-gray-600 uppercase">Applicant</th>
+            <th class="p-3 text-left text-xs font-semibold text-gray-600 uppercase">Job Title</th>
+            <th class="p-3 text-left text-xs font-semibold text-gray-600 uppercase">Company</th>
+            <th class="p-3 text-left text-xs font-semibold text-gray-600 uppercase">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="matchesBody" class="divide-y divide-gray-100"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <script>
+    // Sample data for applicants and jobs
+    const applicants = [
+      { id: 1, name: "Alice Johnson" },
+      { id: 2, name: "Bob Smith" },
+      { id: 3, name: "Carol Lee" },
+    ];
+
+    const jobs = [
+      { id: 1, title: "Frontend Developer", company: "Tech Co" },
+      { id: 2, title: "UI/UX Designer", company: "Design Hub" },
+      { id: 3, title: "Project Manager", company: "Biz Corp" },
+    ];
+
+    // Store matches here
+    let matches = [];
+
+    // Populate dropdowns
+    const applicantSelect = document.getElementById('applicant');
+    const jobSelect = document.getElementById('job');
+    const matchesBody = document.getElementById('matchesBody');
+
+    function populateSelect(selectEl, items, labelKey) {
+      selectEl.innerHTML = '<option value="">-- Select --</option>';
+      items.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item[labelKey];
+        selectEl.appendChild(option);
+      });
+    }
+
+    function renderMatches() {
+      matchesBody.innerHTML = '';
+      if (matches.length === 0) {
+        matchesBody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">No matches created yet.</td></tr>`;
+        return;
+      }
+      matches.forEach((match, i) => {
+        const applicant = applicants.find(a => a.id === match.applicantId);
+        const job = jobs.find(j => j.id === match.jobId);
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-gray-50';
+        tr.innerHTML = `
+          <td class="p-3">${applicant ? applicant.name : 'N/A'}</td>
+          <td class="p-3">${job ? job.title : 'N/A'}</td>
+          <td class="p-3">${job ? job.company : 'N/A'}</td>
+          <td class="p-3">
+            <button class="text-red-600 hover:underline" onclick="deleteMatch(${i})">Delete</button>
+          </td>
+        `;
+        matchesBody.appendChild(tr);
+      });
+    }
+
+    function deleteMatch(index) {
+      matches.splice(index, 1);
+      renderMatches();
+    }
+
+    document.getElementById('matchForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const applicantId = parseInt(applicantSelect.value);
+      const jobId = parseInt(jobSelect.value);
+      if (!applicantId || !jobId) return alert('Please select both applicant and job.');
+
+      // Prevent duplicate match
+      if (matches.some(m => m.applicantId === applicantId && m.jobId === jobId)) {
+        return alert('This match already exists.');
+      }
+
+      matches.push({ applicantId, jobId });
+      renderMatches();
+
+      // Reset form
+      e.target.reset();
+    });
+
+    // Initialize selects and table
+    populateSelect(applicantSelect, applicants, 'name');
+    populateSelect(jobSelect, jobs, 'title');
+    renderMatches();
+  </script>
+</body>
+</html>

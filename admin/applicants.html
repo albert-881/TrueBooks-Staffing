@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Applicants - TrueBooks Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-700">Manage Applicants</h1>
+      <div class="text-sm text-gray-600">Welcome, Admin</div>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="flex pt-24">
+    <aside class="w-60 bg-white shadow-md fixed top-0 left-0 h-full">
+      <div class="px-6 py-5 font-bold text-blue-700 text-xl border-b">TrueBooks Admin</div>
+      <nav class="px-6 py-4 space-y-3 text-sm text-gray-700">
+        <a href="admin-dashboard.html" class="block hover:text-blue-600">Dashboard</a>
+        <a href="applicants.html" class="block text-blue-700 font-semibold">Applicants</a>
+        <a href="companies.html" class="block hover:text-blue-600">Companies</a>
+        <a href="jobs.html" class="block hover:text-blue-600">Jobs</a>
+        <a href="matches.html" class="block hover:text-blue-600">Matches</a>
+        <a href="login.html" class="block text-red-600 mt-6">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-6 ml-60 space-y-6">
+      <!-- Header Section -->
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-semibold">Applicant List</h2>
+        <button class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm shadow transition">Add Applicant</button>
+      </div>
+
+      <!-- Filter and Sort Controls -->
+      <div class="flex space-x-4 mb-4">
+        <input
+          id="filterPosition"
+          type="text"
+          placeholder="Filter by Position"
+          class="border rounded px-3 py-2 text-sm w-48"
+        />
+        <input
+          id="filterCompany"
+          type="text"
+          placeholder="Filter by Company"
+          class="border rounded px-3 py-2 text-sm w-48"
+        />
+        <button id="sortPositionBtn" class="bg-gray-200 hover:bg-gray-300 px-3 rounded text-sm">Sort by Position ↑</button>
+        <button id="sortCompanyBtn" class="bg-gray-200 hover:bg-gray-300 px-3 rounded text-sm">Sort by Company ↑</button>
+      </div>
+
+      <!-- Table Section -->
+      <div class="overflow-x-auto bg-white rounded-lg shadow" data-aos="fade-up">
+        <table id="applicantTable" class="min-w-full text-sm text-left text-gray-700">
+          <thead class="bg-gray-100 border-b text-xs uppercase">
+            <tr>
+              <th class="px-6 py-4">Name</th>
+              <th class="px-6 py-4">Email</th>
+              <th class="px-6 py-4">Phone</th>
+              <th class="px-6 py-4">Resume</th>
+              <th class="px-6 py-4">Company</th>
+              <th class="px-6 py-4">Position</th>
+              <th class="px-6 py-4">Status</th>
+              <th class="px-6 py-4">Priority</th>
+              <th class="px-6 py-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y">
+            <!-- Applicant Row -->
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4 font-medium text-gray-900">John Martinez</td>
+              <td class="px-6 py-4">john@example.com</td>
+              <td class="px-6 py-4">(123) 456-7890</td>
+              <td class="px-6 py-4">
+                <a href="https://example.com/resume-john.pdf" class="text-blue-600 hover:underline text-sm" target="_blank">View Resume</a>
+              </td>
+              <td class="px-6 py-4">Emilias</td>
+              <td class="px-6 py-4">Bookkeeper</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-700 px-2 py-1 text-xs rounded">Available</span>
+              </td>
+              <td class="px-6 py-4">High</td>
+              <td class="px-6 py-4 text-right">
+                <button
+                  class="text-blue-600 hover:underline text-xs mr-3 view-btn"
+                  data-name="John Martinez"
+                  data-email="john@example.com"
+                  data-phone="(123) 456-7890"
+                  data-resume="Bookkeeping, QuickBooks"
+                  data-company="Emilias"
+                  data-position="Bookkeeper"
+                  data-status="Available"
+                  data-salary="$50,000"
+                  data-payperhour="$25"
+                >View</button>
+                <button class="text-yellow-600 hover:underline text-xs mr-3">Edit</button>
+                <button class="text-red-600 hover:underline text-xs">Delete</button>
+              </td>
+            </tr>
+
+            <!-- Another Example -->
+            <tr class="hover:bg-gray-50">
+              <td class="px-6 py-4 font-medium text-gray-900">Sarah Nguyen</td>
+              <td class="px-6 py-4">sarah@accountpros.com</td>
+              <td class="px-6 py-4">(987) 654-3210</td>
+              <td class="px-6 py-4">
+                <a href="https://example.com/resume-john.pdf" class="text-blue-600 hover:underline text-sm" target="_blank">View Resume</a>
+              </td>
+              <td class="px-6 py-4">SA Recycling</td>
+              <td class="px-6 py-4">Payroll Specialist</td>
+              <td class="px-6 py-4">
+                <span class="bg-yellow-100 text-yellow-700 px-2 py-1 text-xs rounded">Interviewing</span>
+              </td>
+              <td class="px-6 py-4">Low</td>
+              <td class="px-6 py-4 text-right">
+                <button
+                  class="text-blue-600 hover:underline text-xs mr-3 view-btn"
+                  data-name="Sarah Nguyen"
+                  data-email="sarah@accountpros.com"
+                  data-phone="(987) 654-3210"
+                  data-skills="Payroll, Compliance"
+                  data-company="SA Recycling"
+                  data-position="Payroll Specialist"
+                  data-status="Interviewing"
+                  data-salary="$55,000"
+                  data-payperhour="$28"
+                >View</button>
+                <button class="text-yellow-600 hover:underline text-xs mr-3">Edit</button>
+                <button class="text-red-600 hover:underline text-xs">Delete</button>
+              </td>
+            </tr>
+
+            <!-- Add more rows as needed -->
+
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div id="applicantModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <!-- Modal Content -->
+    <div class="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+      <button id="modalCloseBtn" class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl font-bold">&times;</button>
+      <h3 class="text-xl font-semibold mb-4">Applicant Details</h3>
+      <div id="modalContent" class="space-y-2 text-gray-700">
+        <!-- Content will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-16 bg-white border-t py-6 text-sm text-center text-gray-500">
+    &copy; 2025 TrueBooks Partners. Admin Portal.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Modal script
+    const modal = document.getElementById('applicantModal');
+    const modalContent = document.getElementById('modalContent');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+    document.querySelectorAll('.view-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.getAttribute('data-name');
+        const email = button.getAttribute('data-email');
+        const phone = button.getAttribute('data-phone');
+        const skills = button.getAttribute('data-skills');
+        const company = button.getAttribute('data-company');
+        const position = button.getAttribute('data-position');
+        const status = button.getAttribute('data-status');
+        const salary = button.getAttribute('data-salary') || 'Not provided';
+        const payPerHour = button.getAttribute('data-payperhour') || 'Not provided';
+
+        modalContent.innerHTML = `
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Skills:</strong> ${skills}</p>
+          <p><strong>Company:</strong> ${company}</p>
+          <p><strong>Position:</strong> ${position}</p>
+          <p><strong>Status:</strong> ${status}</p>
+          <p><strong>Desired Salary:</strong> ${salary}</p>
+          <p><strong>Pay per Hour:</strong> ${payPerHour}</p>
+        `;
+
+        modal.classList.remove('hidden');
+      });
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+
+    // Filtering & Sorting logic
+    const filterPosition = document.getElementById('filterPosition');
+    const filterCompany = document.getElementById('filterCompany');
+    const sortPositionBtn = document.getElementById('sortPositionBtn');
+    const sortCompanyBtn = document.getElementById('sortCompanyBtn');
+    const tableBody = document.querySelector('#applicantTable tbody');
+
+    let positionSortAsc = true;
+    let companySortAsc = true;
+
+    function filterRows() {
+      const posFilter = filterPosition.value.toLowerCase();
+      const compFilter = filterCompany.value.toLowerCase();
+
+      [...tableBody.rows].forEach(row => {
+        const position = row.cells[5].textContent.toLowerCase();
+        const company = row.cells[4].textContent.toLowerCase();
+
+        const showRow =
+          position.includes(posFilter) &&
+          company.includes(compFilter);
+
+        row.style.display = showRow ? '' : 'none';
+      });
+    }
+
+    function sortTable(columnIndex, asc) {
+      const rows = [...tableBody.rows].filter(row => row.style.display !== 'none');
+      rows.sort((a, b) => {
+        const valA = a.cells[columnIndex].textContent.trim().toLowerCase();
+        const valB = b.cells[columnIndex].textContent.trim().toLowerCase();
+        if (valA < valB) return asc ? -1 : 1;
+        if (valA > valB) return asc ? 1 : -1;
+        return 0;
+      });
+      rows.forEach(row => tableBody.appendChild(row));
+    }
+
+    filterPosition.addEventListener('input', filterRows);
+    filterCompany.addEventListener('input', filterRows);
+
+    sortPositionBtn.addEventListener('click', () => {
+      sortTable(5, positionSortAsc);
+      positionSortAsc = !positionSortAsc;
+      sortPositionBtn.textContent = `Sort by Position ${positionSortAsc ? '↑' : '↓'}`;
+    });
+
+    sortCompanyBtn.addEventListener('click', () => {
+      sortTable(4, companySortAsc);
+      companySortAsc = !companySortAsc;
+      sortCompanyBtn.textContent = `Sort by Company ${companySortAsc ? '↑' : '↓'}`;
+    });
+  </script>
+</body>
+</html>

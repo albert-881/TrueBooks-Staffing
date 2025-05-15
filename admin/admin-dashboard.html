@@ -23,14 +23,12 @@
     <aside class="w-60 bg-white shadow-md fixed top-0 left-0 h-full">
       <div class="px-6 py-5 font-bold text-blue-700 text-xl border-b">TrueBooks Admin</div>
       <nav class="px-6 py-4 space-y-3 text-sm text-gray-700">
-        <a href="#" class="block hover:text-blue-600">Dashboard</a>
-        <a href="manage-candidates.html" class="block hover:text-blue-600">Manage Candidates</a>
-        <a href="job-requisitions.html" class="block hover:text-blue-600">Job Requisitions</a>
-       
-        <a href="interview-schedule.html" class="block hover:text-blue-600">Interview Schedule</a>
-        <a href="/reports" class="block hover:text-blue-600">Reports</a>
-        
-        <a href="/logout" class="block text-red-600 mt-6">Logout</a>
+        <a href="admin-dashboard.html" class="block hover:text-blue-600">Dashboard</a>
+        <a href="applicants.html" class="block hover:text-blue-600">Applicants</a>
+        <a href="companies.html" class="block hover:text-blue-600">Companies</a>
+        <a href="jobs.html" class="block hover:text-blue-600">Jobs</a>
+        <a href="matches.html" class="block hover:text-blue-600">Matches</a>
+        <a href="login.html" class="block text-red-600 mt-6">Logout</a>
       </nav>
     </aside>
 
@@ -39,15 +37,15 @@
       <!-- Overview Cards -->
       <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up">
-          <h2 class="text-lg font-semibold text-gray-700">Total Candidates</h2>
+          <h2 class="text-lg font-semibold text-gray-700">Total Applicants</h2>
           <p class="mt-2 text-3xl font-bold text-blue-700">152</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
-          <h2 class="text-lg font-semibold text-gray-700">Open Requisitions</h2>
+          <h2 class="text-lg font-semibold text-gray-700">Open Jobs</h2>
           <p class="mt-2 text-3xl font-bold text-blue-700">18</p>
         </div>
         <div class="bg-white p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
-          <h2 class="text-lg font-semibold text-gray-700">Interviews Scheduled</h2>
+          <h2 class="text-lg font-semibold text-gray-700">Active Matches</h2>
           <p class="mt-2 text-3xl font-bold text-blue-700">9</p>
         </div>
       </section>
@@ -56,16 +54,18 @@
       <section data-aos="fade-up" data-aos-delay="300">
         <h2 class="text-xl font-semibold mb-4">Quick Access</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <a href="manage-candidates.html" class="bg-white hover:shadow-lg transition p-5 rounded-lg text-center">
-            <p class="text-blue-700 font-medium">Manage Candidates</p>
+          <a href="applicants.html" class="bg-white hover:shadow-lg transition p-5 rounded-lg text-center">
+            <p class="text-blue-700 font-medium">Manage Applicants</p>
           </a>
-          <a href="job-requisitions.html" class="bg-white hover:shadow-lg transition p-5 rounded-lg text-center">
-            <p class="text-blue-700 font-medium">Add New Job</p>
+          <a href="companies.html" class="bg-white hover:shadow-lg transition p-5 rounded-lg text-center">
+            <p class="text-blue-700 font-medium">Manage Companies</p>
           </a>
-          <a href="/reports" class="bg-white hover:shadow-lg transition p-5 rounded-lg text-center">
-            <p class="text-blue-700 font-medium">View Reports</p>
+          <a href="jobs.html" class="bg-white hover:shadow-lg transition p-5 rounded-lg text-center">
+            <p class="text-blue-700 font-medium">Post Job Openings</p>
           </a>
-          
+          <a href="matches.html" class="bg-white hover:shadow-lg transition p-5 rounded-lg text-center">
+            <p class="text-blue-700 font-medium">Match Applicants</p>
+          </a>
         </div>
       </section>
 
@@ -74,9 +74,9 @@
         <h2 class="text-xl font-semibold mb-4">Recent Activity</h2>
         <div class="bg-white rounded-lg shadow p-4">
           <ul class="text-sm space-y-3">
-            <li>✔️ John Smith matched to Bookkeeper Requisition</li>
-            <li>✔️ Jane Doe updated availability</li>
-            <li>✔️ New job requisition posted for Payroll Specialist</li>
+            <li>✔️ John Smith matched to Bookkeeper at A+ Tax Firm</li>
+            <li>✔️ Jane Doe applied for Payroll Specialist</li>
+            <li>✔️ New job posted by GreenLeaf Accounting</li>
           </ul>
         </div>
       </section>
